@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfluenceMe - Join as a Creator</title>
+  <meta name="description" content="Apply to join the InfluenceMe Creator Network. Connect with leading brands and launch impactful campaigns.">
+  
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- AOS Animation CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/InfluenceMe Logo.png">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/InfluenceMe Logo.png" alt="InfluenceMe Logo">
+      </a>
+      
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="index.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Home</a></li>
+          <li><a href="work.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Work</a></li>
+          <li><a href="about.html"><i class="fa-solid fa-bell nav-hover-bell"></i>About</a></li>
+          <li><a href="contact.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Contact Us</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-actions">
+        <a href="join.html" class="btn btn-primary btn-nav">Join as a creator</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Join Hero Section -->
+    <section class="join-hero-section" data-aos="fade-up" data-aos-duration="1000">
+      <div class="join-container">
+        <h1 class="brands-bold-title">
+          Join as the Creator<br>
+          <span class="highlight">Network</span>
+        </h1>
+        <p class="section-subtitle" style="margin: 1.5rem auto 0; max-width: 680px;">
+          We partner with creators who have a genuine voice and engaged communities. Tell us about yourself — we read every application.
+        </p>
+        
+        <!-- Creator Onboarding Form -->
+        <form class="join-form" id="creatorForm">
+          
+          <!-- Section 01: About You -->
+          <div class="form-section">
+            <h3 class="form-step-title">01 — About You</h3>
+            <div class="form-row">
+              <div class="contact-form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Full name" required>
+              </div>
+              <div class="contact-form-group">
+                <label for="emailAddress">Email</label>
+                <input type="email" id="emailAddress" placeholder="example@gmail.com" required>
+              </div>
+              <div class="contact-form-group form-group-full">
+                <div class="form-label-with-helper">
+                  <label for="location">Location</label>
+                  <span class="form-label-helper">City, Country</span>
+                </div>
+                <input type="text" id="location" placeholder="Lagos, Nigeria" required>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Section 02: Your Handles -->
+          <div class="form-section">
+            <h3 class="form-step-title">02 — Your Handles</h3>
+            <p class="form-label-helper" style="margin-top: -1.5rem; margin-bottom: 1.5rem; text-align: left; font-size: 0.95rem;">
+              Add at least one platform where your audience follows you.
+            </p>
+            <div class="handles-grid">
+              <div class="handle-input-wrapper">
+                <i class="fa-brands fa-instagram"></i>
+                <input type="text" id="igHandle" placeholder="@yourhandle">
+              </div>
+              <div class="handle-input-wrapper">
+                <i class="fa-brands fa-tiktok"></i>
+                <input type="text" id="tiktokHandle" placeholder="@yourhandle">
+              </div>
+              <div class="handle-input-wrapper">
+                <i class="fa-brands fa-twitter"></i>
+                <input type="text" id="twitterHandle" placeholder="@yourhandle">
+              </div>
+              <div class="handle-input-wrapper">
+                <i class="fa-brands fa-youtube"></i>
+                <input type="text" id="youtubeHandle" placeholder="@yourhandle">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Section 03: Your Audience -->
+          <div class="form-section">
+            <h3 class="form-step-title">03 — Your Audience</h3>
+            <div class="form-row">
+              <!-- Custom Dropdown: Primary Niche -->
+              <div class="contact-form-group">
+                <label>Primary Niche</label>
+                <div class="custom-select" id="nicheSelect">
+                  <div class="select-trigger" tabindex="0">
+                    <span class="select-value">Select a niche...</span>
+                    <i class="fa-solid fa-chevron-down select-caret"></i>
+                  </div>
+                  <div class="select-options">
+                    <div class="select-option" data-value="Beauty & Skincare">Beauty & Skincare</div>
+                    <div class="select-option" data-value="Fashion & Style">Fashion & Style</div>
+                    <div class="select-option" data-value="Fitness & Wellness">Fitness & Wellness</div>
+                    <div class="select-option" data-value="Food & Cooking">Food & Cooking</div>
+                    <div class="select-option" data-value="Travel & Lifestyle">Travel & Lifestyle</div>
+                    <div class="select-option" data-value="Tech & Gaming">Tech & Gaming</div>
+                    <div class="select-option" data-value="Parenting & Family">Parenting & Family</div>
+                    <div class="select-option" data-value="Finance & Business">Finance & Business</div>
+                    <div class="select-option" data-value="Art & DIY">Art & DIY</div>
+                    <div class="select-option" data-value="Comedy & Entertainment">Comedy & Entertainment</div>
+                    <div class="select-option" data-value="Sport & Outdoors">Sport & Outdoors</div>
+                    <div class="select-option" data-value="Music & Culture">Music & Culture</div>
+                    <div class="select-option" data-value="Other">Other</div>
+                  </div>
+                  <input type="hidden" id="primaryNiche" name="primaryNiche" required>
+                </div>
+              </div>
+              
+              <!-- Custom Dropdown: Total Audience Size -->
+              <div class="contact-form-group">
+                <label>Total Audience Size</label>
+                <div class="custom-select" id="audienceSelect">
+                  <div class="select-trigger" tabindex="0">
+                    <span class="select-value">Select range...</span>
+                    <i class="fa-solid fa-chevron-down select-caret"></i>
+                  </div>
+                  <div class="select-options">
+                    <div class="select-option" data-value="Nano (1K - 10K)">Nano (1K - 10K)</div>
+                    <div class="select-option" data-value="Micro (10K - 100K)">Micro (10K - 100K)</div>
+                    <div class="select-option" data-value="Mid-tier (100K - 500K)">Mid-tier (100K - 500K)</div>
+                    <div class="select-option" data-value="Macro (500K - 1M)">Macro (500K - 1M)</div>
+                    <div class="select-option" data-value="Mega (1M+)">Mega (1M+)</div>
+                  </div>
+                  <input type="hidden" id="audienceSize" name="audienceSize" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Section 04: Media Kit -->
+          <div class="form-section">
+            <h3 class="form-step-title">04 — Media Kit</h3>
+            <div class="form-group-full">
+              <p class="form-label-helper" style="margin-top: -1.5rem; margin-bottom: 1.5rem; text-align: left; font-size: 0.95rem;">
+                Optional but strongly encouraged. PDF, PPTX, JPG, PNG, or ZIP — max 20MB.
+              </p>
+              <div class="file-upload-zone" id="uploadZone">
+                <div class="upload-icon-btn">
+                  <i class="fa-solid fa-arrow-up"></i>
+                </div>
+                <div class="upload-label" id="uploadLabel">
+                  Drop your media kit here or <span>browse</span>
+                </div>
+                <input type="file" id="mediaKit" accept=".pdf,.pptx,.jpg,.png,.zip" style="display: none;">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Section 05: Your Pitch -->
+          <div class="form-section">
+            <div class="form-label-with-helper" style="border-bottom: 1px solid var(--border-light); padding-bottom: 0.75rem; margin-bottom: 2rem;">
+              <h3 class="form-step-title" style="border: none; margin: 0; padding: 0;">05 — Your Pitch</h3>
+              <span class="form-label-helper">Minimum 50 characters</span>
+            </div>
+            
+            <div class="contact-form-group form-group-full">
+              <label for="pitchText">Why do you want to work with us?</label>
+              <textarea id="pitchText" placeholder="Tell us about your audience, what kind of collaborations excite you, and why you think we'd be a great fit..." required></textarea>
+              <div class="char-count" id="charCount">0 characters (min 50 characters required)</div>
+            </div>
+          </div>
+          
+          <!-- Consent and Submit Footer -->
+          <div class="form-footer">
+            <label class="consent-checkbox-wrapper">
+              <input type="checkbox" id="consentCheck" required>
+              <span class="consent-label">By submitting, you agree to our review process. We respond within 5–7 business days.</span>
+            </label>
+            <button type="submit" class="btn-submit-app" id="submitBtn">Submit application</button>
+          </div>
+          
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer id="contactFooter" class="footer">
+    <div class="container footer-container">
+      <!-- Left Section -->
+      <div class="footer-left-sec" data-aos="fade-up" data-aos-duration="1000">
+        <div class="footer-logo-white">
+          <img src="images/White Logo.png" alt="InfluenceMe Logo">
+        </div>
+        <h2 class="footer-title">Let's Build<br>Something Impactful</h2>
+        <p class="footer-desc">Ready to launch campaigns that connect your brand with the right voices? Let’s make it happen.</p>
+        <a href="contact.html" class="btn btn-primary footer-btn">Get in Touch</a>
+      </div>
+
+      <!-- Right Section -->
+      <div class="footer-right-sec" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+        <div class="footer-nav-grid">
+          <div class="footer-column">
+            <!-- <h4>Company</h4> -->
+            <ul>
+              <li><a href="index.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Home</a></li>
+              <li><a href="work.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Work</a></li>
+              <li><a href="about.html"><i class="fa-solid fa-bell nav-hover-bell"></i>About</a></li>
+              <li><a href="contact.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="tel:+2349031807243"><i class="fa-solid fa-bell nav-hover-bell"></i>09031807243</a></li>
+              <li><a href="mailto:influenceme@gmail.com"><i class="fa-solid fa-bell nav-hover-bell"></i>influenceme@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p class="copyright">&copy; 2026 InfluenceMe. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Success Notification Modal -->
+  <div class="success-modal" id="successModal">
+    <div class="success-modal-content">
+      <div class="success-modal-icon">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h3 class="success-modal-title">Application Submitted!</h3>
+      <p class="success-modal-text">Thank you for applying to join the InfluenceMe Creator Network. We have received your details and will respond within 5–7 business days.</p>
+      <button class="btn btn-primary" id="closeModalBtn" style="width: 100%;">Close</button>
+    </div>
+  </div>
+
+  <!-- AOS Animation Library JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  
+  <!-- Custom JS -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>

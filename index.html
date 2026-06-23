@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfluenceMe - Influencer Marketing Made Effortless</title>
+  <meta name="description" content="We connect brands with the right creators to drive real results. Replicate premium influencer campaign strategies, creator matchmaking, and gifting.">
+  
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- AOS Animation CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/InfluenceMe Logo.png">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <img src="images/InfluenceMe Logo.png" alt="InfluenceMe Logo">
+      </a>
+      
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="#"><i class="fa-solid fa-bell nav-hover-bell"></i>Home</a></li>
+          <li><a href="work.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Work</a></li>
+          <li><a href="about.html"><i class="fa-solid fa-bell nav-hover-bell"></i>About</a></li>
+          <li><a href="contact.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Contact Us</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-actions">
+        <a href="join.html" class="btn btn-primary btn-nav">Join as a creator</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+          <h1 class="hero-title">
+            Influencer Marketing<br>
+            <span class="highlight">Made Effortless</span>
+          </h1>
+          <p class="hero-subtitle">
+            Helping brands scale locally and globally with data-driven strategies, creative storytelling, and impactful campaigns.
+          </p>
+          <div class="hero-actions">
+            <a href="join.html" class="btn btn-primary">Join as a Creator</a>
+          </div>
+        </div>
+
+        <!-- 3-Image Grid -->
+        <div class="hero-grid" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200">
+          <div class="hero-card hero-card-left">
+            <img src="images/hero/man phone.png" alt="Creator sharing content on phone">
+          </div>
+          <div class="hero-card hero-card-middle">
+            <img src="images/hero/Lady yoga.png" alt="Creator recording fitness tutorial outdoors">
+          </div>
+          <div class="hero-card hero-card-right">
+            <img src="images/hero/lady phone.png" alt="Influencer reviewing product on couch">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Small Brands Logo Strip (Carousel on Mobile) -->
+    <section class="brand-strip-section" data-aos="fade-up" data-aos-duration="800">
+      <div class="container">
+        <div class="brand-strip-wrapper">
+          <div class="brand-strip-track">
+            <!-- First set of logos -->
+            <div class="brand-logo-item"><img src="images/work/MTN.png" alt="MTN"></div>
+            <div class="brand-logo-item"><img src="images/work/Cowbell.png" alt="Cowbell"></div>
+            <div class="brand-logo-item"><img src="images/work/all day 1.png" alt="All Day"></div>
+            <div class="brand-logo-item"><img src="images/work/DSTV.png" alt="DSTV"></div>
+            <div class="brand-logo-item"><img src="images/work/Breet app.png" alt="Breet App"></div>
+            <div class="brand-logo-item"><img src="images/work/Doobai Deodorant.png" alt="Doobai"></div>
+            <div class="brand-logo-item"><img src="images/work/iStore NIgeria.png" alt="iStore"></div>
+            <div class="brand-logo-item"><img src="images/work/Onfleekq.png" alt="Onfleek"></div>
+            
+            <!-- Duplicated set of logos for infinite loop marquee on mobile -->
+            <div class="brand-logo-item"><img src="images/work/MTN.png" alt="MTN"></div>
+            <div class="brand-logo-item"><img src="images/work/Cowbell.png" alt="Cowbell"></div>
+            <div class="brand-logo-item"><img src="images/work/all day 1.png" alt="All Day"></div>
+            <div class="brand-logo-item"><img src="images/work/DSTV.png" alt="DSTV"></div>
+            <div class="brand-logo-item"><img src="images/work/Breet app.png" alt="Breet App"></div>
+            <div class="brand-logo-item"><img src="images/work/Doobai Deodorant.png" alt="Doobai"></div>
+            <div class="brand-logo-item"><img src="images/work/iStore NIgeria.png" alt="iStore"></div>
+            <div class="brand-logo-item"><img src="images/work/Onfleekq.png" alt="Onfleek"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Platform Banner Section (Scattered Icons) -->
+    <section class="platform-banner">
+      <div class="container platform-relative-container">
+        
+        <!-- Center Header Title -->
+        <div class="platform-header" data-aos="fade-up" data-aos-duration="800">
+          <p class="section-tagline">Our Channels</p>
+          <h2 class="platform-title">We operate on all <br><span class="highlight-inline">social media</span> platforms</h2>
+        </div>
+        
+        <!-- Scattered Social Media Cards -->
+        <div class="platform-scattered-container">
+          <!-- Instagram (Top Left) -->
+          <div class="platform-badge badge-instagram" data-aos="zoom-in" data-aos-delay="100">
+            <div class="platform-icon instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+          </div>
+          
+          <!-- TikTok (Top Right) -->
+          <div class="platform-badge badge-tiktok" data-aos="zoom-in" data-aos-delay="200">
+            <div class="platform-icon tiktok">
+              <i class="fa-brands fa-tiktok"></i>
+            </div>
+          </div>
+          
+          <!-- Threads (Middle Right) -->
+          <div class="platform-badge badge-threads" data-aos="zoom-in" data-aos-delay="300">
+            <div class="platform-icon threads">
+              <i class="fa-brands fa-twitter"></i>
+            </div>
+          </div>
+          
+          <!-- YouTube (Bottom Left) -->
+          <div class="platform-badge badge-youtube" data-aos="zoom-in" data-aos-delay="400">
+            <div class="platform-icon youtube">
+              <i class="fa-brands fa-youtube"></i>
+            </div>
+          </div>
+          
+          <!-- Snapchat (Bottom Right) -->
+          <div class="platform-badge badge-snapchat" data-aos="zoom-in" data-aos-delay="500">
+            <div class="platform-icon snapchat">
+              <i class="fa-brands fa-snapchat"></i>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Brands Grid Section (Centered header, 2x2 grid, work badge with icon, square cards) -->
+    <section id="brands" class="brands-section">
+      <div class="container">
+        <div class="section-header-centered" data-aos="fade-up" data-aos-duration="800">
+          <div class="section-tag-wrapper">
+            <span class="section-tag-btn"><i class="fa-solid fa-briefcase"></i> Work</span>
+          </div>
+          <h2 class="brands-bold-title">Brands We've Helped <br/> <span class="highlight-inline">Grow</span></h2>
+          <p class="section-subtitle">We partner with leading local and global brands to deliver authentic campaigns that engage and convert.</p>
+        </div>
+
+        <div class="brands-grid-2x2" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+          <!-- MTN Card -->
+          <div class="brand-card brand-mtn">
+            <div class="brand-logo-container">
+              <img src="images/work/MTN.png" alt="MTN Logo">
+            </div>
+            <div class="brand-card-footer">
+              <span class="brand-card-name">MTN Nigeria</span>
+              <a href="#" class="brand-card-link">View <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Cowbell Card -->
+          <div class="brand-card brand-cowbell">
+            <div class="brand-logo-container">
+              <img src="images/work/Cowbell.png" alt="Cowbell Milk Logo">
+            </div>
+            <div class="brand-card-footer">
+              <span class="brand-card-name">Cowbell</span>
+              <a href="#" class="brand-card-link">View <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- All Day Card -->
+          <div class="brand-card brand-allday">
+            <div class="brand-logo-container">
+              <img src="images/work/all day 1.png" alt="All Day Logo">
+            </div>
+            <div class="brand-card-footer">
+              <span class="brand-card-name">All Day Deodorants</span>
+              <a href="#" class="brand-card-link">View <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Doobai Card -->
+          <div class="brand-card brand-doobai">
+            <div class="brand-logo-container">
+              <img src="images/work/Doobai Deodorant.png" alt="Doobai Logo">
+            </div>
+            <div class="brand-card-footer">
+              <span class="brand-card-name">Doobai</span>
+              <a href="#" class="brand-card-link">View <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="brands-actions" data-aos="fade-up" data-aos-duration="800">
+          <a href="work.html" class="btn btn-outline">See all</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section (Inline Accordion Layout, Service badge with icon, PNG Vector Icons) -->
+    <section id="services" class="services-section">
+      <div class="container services-container">
+        <!-- Left Side: Section Titles -->
+        <div class="services-left" data-aos="fade-right" data-aos-duration="1000">
+          <div class="section-tag-wrapper-left">
+            <span class="section-tag-btn"><i class="fa-solid fa-handshake-simple"></i> Services</span>
+          </div>
+          <h2 class="services-main-title">Our <span class="highlight-inline">Services</span></h2>
+          <p class="services-intro">Our services are designed to increase visibility, engagement, and conversions across today’s digital platforms.</p>
+        </div>
+
+        <!-- Right Side: Accordion Cards Stack with dropdown contents inline -->
+        <div class="services-right" data-aos="fade-left" data-aos-duration="1000">
+          <div class="services-stack">
+            
+            <!-- Accordion Card 01 -->
+            <div class="service-accordion-card active" data-index="1">
+              <div class="service-accordion-header">
+                <span class="service-num">01</span>
+                <span class="service-icon-wrapper">
+                  <img src="images/service/viral-marketing-svgrepo-com 1.png" alt="Campaign Strategy">
+                </span>
+              </div>
+              <div class="service-accordion-content">
+                <h3 class="service-accordion-title">Campaign Strategy & Execution</h3>
+                <p class="service-accordion-desc">
+                  We don’t believe in guesswork. Every campaign starts with a clear strategy customised to your brand, budget, and goals. From launch to finish, we map out content themes, posting timelines, influencer briefs, and KPIs to make sure your message lands the right way.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Card 02 -->
+            <div class="service-accordion-card" data-index="2">
+              <div class="service-accordion-header">
+                <span class="service-num">02</span>
+                <span class="service-icon-wrapper">
+                  <img src="images/service/teamwork-svgrepo-com 1.png" alt="Creator Sourcing">
+                </span>
+              </div>
+              <div class="service-accordion-content">
+                <h3 class="service-accordion-title">Creator Sourcing & Management</h3>
+                <p class="service-accordion-desc">
+                  Finding the right creators can be overwhelming. We tap into a curated network of micro, macro, and celebrity influencers across Nigeria and beyond, matching you with talent that fits your brand voice, audience, and vibe. We handle onboarding, negotiation, deliverables, and timelines so your campaign runs smoothly.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Card 03 -->
+            <div class="service-accordion-card" data-index="3">
+              <div class="service-accordion-header">
+                <span class="service-num">03</span>
+                <span class="service-icon-wrapper">
+                  <img src="images/service/content-management-svgrepo-com 1.png" alt="Content Management">
+                </span>
+              </div>
+              <div class="service-accordion-content">
+                <h3 class="service-accordion-title">Content Creation & Direction</h3>
+                <p class="service-accordion-desc">
+                  Today’s audience connects with content that feels real. We work with creators to produce content that’s not just “nice to have” but drives results. From unboxing to tutorials to lifestyle placements, we ensure your brand shows up in content that’s relatable, engaging and on-brand.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Card 04 -->
+            <div class="service-accordion-card" data-index="4">
+              <div class="service-accordion-header">
+                <span class="service-num">04</span>
+                <span class="service-icon-wrapper">
+                  <img src="images/service/reporting-svgrepo-com 1.png" alt="Reporting">
+                </span>
+              </div>
+              <div class="service-accordion-content">
+                <h3 class="service-accordion-title">Tracking, Analysis & Reporting</h3>
+                <p class="service-accordion-desc">
+                  Our job doesn’t end when the posts go live. We track and analyse key metrics like reach, impressions, engagement rates, click and conversions. You’ll receive a detailed report with actionable insights, so you know what worked, what didn’t and what to do next.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Card 05 -->
+            <div class="service-accordion-card" data-index="5">
+              <div class="service-accordion-header">
+                <span class="service-num">05</span>
+                <span class="service-icon-wrapper">
+                  <img src="images/service/deal-done-partnership-agreement-svgrepo-com 1.png" alt="Matchmaking">
+                </span>
+              </div>
+              <div class="service-accordion-content">
+                <h3 class="service-accordion-title">Brand & influencer matchmaking</h3>
+                <p class="service-accordion-desc">
+                  We believe in building long-term relationships. Our matchmaking service helps brand and creators find authentic alignment for ambassador programs, recurring partnerships and more. No forced fits just natural connections that lead to real influence.
+                </p>
+              </div>
+            </div>
+
+            <!-- Accordion Card 06 -->
+            <div class="service-accordion-card" data-index="6">
+              <div class="service-accordion-header">
+                <span class="service-num">06</span>
+                <span class="service-icon-wrapper">
+                  <img src="images/service/campaign-conversion-generation-svgrepo-com 1.png" alt="Gifting Programs">
+                </span>
+              </div>
+              <div class="service-accordion-content">
+                <h3 class="service-accordion-title">Influencer Gifting Programs</h3>
+                <p class="service-accordion-desc">
+                  Want to get your product into the right hands and generate organic buzz? We coordinate and manage influencer gifting programs from A to Z targeting the right creators, managing dispatch, tracking feedback, and encouraging content that feels organic (because it is).
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section (Centered top, Testimonials badge with icon, Verified author icon) -->
+    <section id="testimonials" class="testimonials-section">
+      <div class="container">
+        <div class="section-header-centered" data-aos="fade-up" data-aos-duration="800">
+          <div class="section-tag-wrapper">
+            <span class="section-tag-btn"><i class="fa-solid fa-comments"></i> Testimonials</span>
+          </div>
+          <h2>What our <span class="highlight-inline">Clients</span> <br/> Say</h2>
+          <p class="section-subtitle">Real feedback from brands and agency partners who trust InfluenceMe to scale their creator networks.</p>
+        </div>
+
+        <div class="testimonials-grid" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+          <!-- Card 1 -->
+          <div class="testimonial-card">
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "Influence Me brought fresh and innovative ideas to our influencer campaigns. Their expertise in identifying and nurturing the right talent for our brand was exactly what we needed. The level of engagement and visibility our products received surpassed our expectations. We’re excited to continue this partnership"
+            </p>
+            <div class="testimonial-author">
+              <div>
+                <span class="author-name">Ngozi Okafor <i class="fa-solid fa-circle-check verified-badge"></i></span>
+                <!-- <span class="author-title">Brand Lead, MTN Nigeria</span> -->
+              </div>
+              <!-- <span class="author-arrow"><i class="fa-solid fa-arrow-right"></i></span> -->
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="testimonial-card">
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "Influence Me has been a great partner for our recent campaigns. From developing a tailored influencer strategy to ensuring smooth execution, their team handled every detail. Their approach is not only professional but also personalised to meet the unique needs of our brand. The results we’ve seen have been exceptional"
+            </p>
+            <div class="testimonial-author">
+              <div>
+                <span class="author-name">Amina Abubakar <i class="fa-solid fa-circle-check verified-badge"></i></span>
+                <!-- <span class="author-title">Marketing Director, Cowbell Milk</span> -->
+              </div>
+              <!-- <span class="author-arrow"><i class="fa-solid fa-arrow-right"></i></span> -->
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="testimonial-card">
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "As a fast-growing startup, we needed an influencer marketing agency that understood the power of authenticity. Influence Me delivered on that and more. They helped us build relationships with influencers who genuinely align with our brand values, resulting in real, meaningful connections with our target audience. We couldn’t be happier with the results!"
+            </p>
+            <div class="testimonial-author">
+              <div>
+                <span class="author-name">Tariro Nyoni <i class="fa-solid fa-circle-check verified-badge"></i></span>
+                <!-- <span class="author-title">Founder, All Day Foods</span> -->
+              </div>
+              <!-- <span class="author-arrow"><i class="fa-solid fa-arrow-right"></i></span> -->
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="testimonial-card">
+            <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-text">
+              "The team at Influence Me is phenomenal. They not only provided valuable insights into the influencer landscape but also ensured that our campaigns were aligned with our goals and values. The ROI we’ve seen speaks for itself, and we look forward to collaborating with them on future projects."
+            </p>
+            <div class="testimonial-author">
+              <div>
+                <span class="author-name">Zanele Khumalo<i class="fa-solid fa-circle-check verified-badge"></i></span>
+                <!-- <span class="author-title">E-commerce Lead, DSTV</span> -->
+              </div>
+              <!-- <span class="author-arrow"><i class="fa-solid fa-arrow-right"></i></span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer id="contact" class="footer">
+    <div class="container footer-container">
+      <!-- Left Section -->
+      <div class="footer-left-sec" data-aos="fade-up" data-aos-duration="1000">
+        <div class="footer-logo-white">
+          <img src="images/White Logo.png" alt="InfluenceMe Logo">
+        </div>
+        <h2 class="footer-title">Let's Build<br>Something Impactful</h2>
+        <p class="footer-desc">Ready to launch campaigns that connect your brand with the right voices? Let’s make it happen.</p>
+        <a href="contact.html" class="btn btn-primary footer-btn">Get in Touch</a>
+      </div>
+
+      <!-- Right Section -->
+      <div class="footer-right-sec" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+        <div class="footer-nav-grid">
+          <div class="footer-column">
+            <!-- <h4>Company</h4> -->
+            <ul>
+              <li><a href="#"><i class="fa-solid fa-bell nav-hover-bell"></i>Home</a></li>
+              <li><a href="work.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Work</a></li>
+              <li><a href="about.html"><i class="fa-solid fa-bell nav-hover-bell"></i>About</a></li>
+              <li><a href="contact.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="tel:+2349031807243"><i class="fa-solid fa-bell nav-hover-bell"></i>09031807243</a></li>
+              <li><a href="mailto:influenceme@gmail.com"><i class="fa-solid fa-bell nav-hover-bell"></i>influenceme@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p class="copyright">&copy; 2026 InfluenceMe. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS Animation Library JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  
+  <!-- Custom JS -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>

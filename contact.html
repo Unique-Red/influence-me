@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfluenceMe - Contact Us</title>
+  <meta name="description" content="Get in touch with us for a free consultation. Scale your brand using data-driven influencer campaign strategies.">
+  
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- AOS Animation CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/InfluenceMe Logo.png">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/InfluenceMe Logo.png" alt="InfluenceMe Logo">
+      </a>
+      
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="index.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Home</a></li>
+          <li><a href="work.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Work</a></li>
+          <li><a href="about.html"><i class="fa-solid fa-bell nav-hover-bell"></i>About</a></li>
+          <li><a href="contact.html" class="active"><i class="fa-solid fa-bell nav-hover-bell"></i>Contact Us</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-actions">
+        <a href="join.html" class="btn btn-primary btn-nav">Join as a creator</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Contact Hero Section -->
+    <section class="contact-hero-section" data-aos="fade-up" data-aos-duration="1000">
+      <div class="contact-container">
+        <h1 class="brands-bold-title">
+          Contact us for a free<br>
+          <span class="highlight">consultation</span>
+        </h1>
+        
+        <!-- Contact Form -->
+        <form class="contact-form" id="contactForm">
+          <div class="contact-form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" placeholder="Full name" required>
+          </div>
+          
+          <div class="contact-form-group">
+            <label for="emailAddress">Email</label>
+            <input type="email" id="emailAddress" placeholder="example@gmail.com" required>
+          </div>
+          
+          <div class="contact-form-group">
+            <label for="websiteUrl">Website URL (optional)</label>
+            <input type="url" id="websiteUrl" placeholder="https://www.example.com">
+          </div>
+          
+          <div class="contact-form-group">
+            <label for="helpDetails">How can we help you ?</label>
+            <textarea id="helpDetails" placeholder="" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn-submit">Submit</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer id="contactFooter" class="footer">
+    <div class="container footer-container">
+      <!-- Left Section -->
+      <div class="footer-left-sec" data-aos="fade-up" data-aos-duration="1000">
+        <div class="footer-logo-white">
+          <img src="images/White Logo.png" alt="InfluenceMe Logo">
+        </div>
+        <h2 class="footer-title">Let's Build<br>Something Impactful</h2>
+        <p class="footer-desc">Ready to launch campaigns that connect your brand with the right voices? Let’s make it happen.</p>
+        <a href="contact.html" class="btn btn-primary footer-btn">Get in Touch</a>
+      </div>
+
+      <!-- Right Section -->
+      <div class="footer-right-sec" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+        <div class="footer-nav-grid">
+          <div class="footer-column">
+            <!-- <h4>Company</h4> -->
+            <ul>
+              <li><a href="index.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Home</a></li>
+              <li><a href="work.html"><i class="fa-solid fa-bell nav-hover-bell"></i>Work</a></li>
+              <li><a href="about.html"><i class="fa-solid fa-bell nav-hover-bell"></i>About</a></li>
+              <li><a href="contact.html" class="active"><i class="fa-solid fa-bell nav-hover-bell"></i>Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="tel:+2349031807243"><i class="fa-solid fa-bell nav-hover-bell"></i>09031807243</a></li>
+              <li><a href="mailto:influenceme@gmail.com"><i class="fa-solid fa-bell nav-hover-bell"></i>influenceme@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p class="copyright">&copy; 2026 InfluenceMe. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Success Notification Modal -->
+  <div class="success-modal" id="successModal">
+    <div class="success-modal-content">
+      <div class="success-modal-icon">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h3 class="success-modal-title">Thank You!</h3>
+      <p class="success-modal-text">Your message has been sent successfully. We will get back to you shortly for your free consultation.</p>
+      <button class="btn btn-primary" id="closeModalBtn" style="width: 100%;">Close</button>
+    </div>
+  </div>
+
+  <!-- AOS Animation Library JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  
+  <!-- Custom JS -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>
