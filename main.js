@@ -94,23 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Contact Form Submission (Mock handling with success modal)
-  const contactForm = document.getElementById('contactForm');
+  // 5. Success Modal Close Handlers (Shared between Contact and Creator forms)
   const successModal = document.getElementById('successModal');
   const closeModalBtn = document.getElementById('closeModalBtn');
 
-  if (contactForm && successModal) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      console.log("InfluenceMe: Form submitted!");
-      
-      // Show success modal
-      successModal.classList.add('active');
-      
-      // Reset the form
-      contactForm.reset();
-    });
-
+  if (successModal) {
     if (closeModalBtn) {
       closeModalBtn.addEventListener('click', () => {
         successModal.classList.remove('active');
@@ -125,7 +113,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Creator Application Form Interactive Logic
+  // 6. Contact Form Submission (Mock handling)
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm && successModal) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      console.log("InfluenceMe: Contact Form submitted!");
+      
+      // Show success modal
+      successModal.classList.add('active');
+      
+      // Reset the form
+      contactForm.reset();
+    });
+  }
+
+  // 7. Creator Application Form Interactive Logic
   const creatorForm = document.getElementById('creatorForm');
   const pitchText = document.getElementById('pitchText');
   const charCount = document.getElementById('charCount');
