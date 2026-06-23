@@ -66,18 +66,44 @@
             <a href="join" class="btn btn-primary">Join as a Creator</a>
           </div>
         </div>
+      </div>
 
-        <!-- 3-Image Grid -->
-        <div class="hero-grid" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200">
-          <div class="hero-card hero-card-left">
-            <img src="images/hero/man phone.png" alt="Creator sharing content on phone">
+      <!-- Auto Scrollable Carousel -->
+      <div class="hero-carousel-wrapper" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200">
+        <button class="carousel-nav-btn prev-btn" aria-label="Previous Slide">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        
+        <div class="hero-carousel-viewport">
+          <div class="hero-carousel-track" id="heroCarouselTrack">
+            <div class="hero-carousel-card">
+              <img src="images/hero/man phone.png" alt="Creator sharing content on phone">
+            </div>
+            <div class="hero-carousel-card">
+              <img src="images/hero/Lady yoga.png" alt="Creator recording fitness tutorial outdoors">
+            </div>
+            <div class="hero-carousel-card">
+              <img src="images/hero/lady phone.png" alt="Influencer reviewing product on couch">
+            </div>
+            <div class="hero-carousel-card">
+              <img src="images/hero/lady stand.png" alt="Creator standing and taking photo">
+            </div>
+            <div class="hero-carousel-card">
+              <img src="images/hero/man book phone.png" alt="Creator sitting with book and phone">
+            </div>
           </div>
-          <div class="hero-card hero-card-middle">
-            <img src="images/hero/Lady yoga.png" alt="Creator recording fitness tutorial outdoors">
-          </div>
-          <div class="hero-card hero-card-right">
-            <img src="images/hero/lady phone.png" alt="Influencer reviewing product on couch">
-          </div>
+        </div>
+
+        <button class="carousel-nav-btn next-btn" aria-label="Next Slide">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        
+        <div class="carousel-indicators" id="carouselIndicators">
+          <span class="indicator-dot active" data-index="0"></span>
+          <span class="indicator-dot" data-index="1"></span>
+          <span class="indicator-dot" data-index="2"></span>
+          <span class="indicator-dot" data-index="3"></span>
+          <span class="indicator-dot" data-index="4"></span>
         </div>
       </div>
     </section>
@@ -181,7 +207,14 @@
             </div>
             <div class="brand-card-footer">
               <span class="brand-card-name">MTN Nigeria</span>
-              <a href="#" class="brand-card-link">View <i class="fa-solid fa-arrow-right"></i></a>
+              <div class="brand-dropdown-container">
+                <button class="brand-dropdown-trigger" aria-label="View MTN proof of work">View <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="brand-dropdown-menu">
+                  <a href="#" target="_blank" rel="noopener"><i class="fa-solid fa-circle-play"></i> Watch Video</a>
+                  <a href="#" target="_blank" rel="noopener"><i class="fa-solid fa-chart-simple"></i> Campaign Stats</a>
+                  <a href="#" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Social Post</a>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -214,7 +247,13 @@
             </div>
             <div class="brand-card-footer">
               <span class="brand-card-name">Doobai</span>
-              <a href="#" class="brand-card-link">View <i class="fa-solid fa-arrow-right"></i></a>
+              <div class="brand-dropdown-container">
+                <button class="brand-dropdown-trigger" aria-label="View Doobai proof of work">View <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="brand-dropdown-menu">
+                  <a href="#" target="_blank" rel="noopener"><i class="fa-solid fa-circle-play"></i> Campaign Video</a>
+                  <a href="#" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Social Post</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -403,61 +403,71 @@ h1, h2, h3, h4 {
   margin: 0 auto 2.5rem;
 }
 
-/* 3-Image Grid Layout */
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2rem;
+/* --- Hero Carousel Styles --- */
+.hero-carousel-wrapper {
+  position: relative;
   width: 100%;
+  max-width: 100%;
+  margin-top: 3.5rem;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-.hero-card {
+.hero-carousel-viewport {
+  overflow: visible; /* Allows cards to overflow and extend edge-to-edge */
+  width: 100%;
+  padding: 25px 0;
+}
+
+.hero-carousel-track {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.hero-carousel-card {
+  flex-shrink: 0;
+  width: 18vw;
+  max-width: 300px;
+  min-width: 240px;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-medium);
-  transition: var(--transition-smooth);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease, box-shadow 0.6s ease;
   height: 420px;
+  opacity: 0.85; /* Inactive cards are slightly translucent to draw focus to center */
+  transform: scale(0.96);
 }
 
-.hero-card img {
+.hero-carousel-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: var(--transition-smooth);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
 }
 
-.hero-card:hover {
-  transform: translateY(-8px);
+/* Focused active card styles */
+.hero-carousel-card.active-slide {
+  opacity: 1;
+  transform: scale(1.03);
   box-shadow: var(--shadow-strong);
 }
 
-.hero-card:hover img {
-  transform: scale(1.05);
+.hero-carousel-card:hover img {
+  transform: scale(1.06);
 }
 
-/* Custom alignment for image cards to replicate organic look */
-.hero-card-left {
-  transform: translateY(30px);
+/* Carousel Navigation Buttons - Hidden as they are not in the screenshot design */
+.carousel-nav-btn {
+  display: none !important;
 }
 
-.hero-card-middle {
-  transform: translateY(-20px);
-}
-
-.hero-card-right {
-  transform: translateY(15px);
-}
-
-.hero-card-left:hover {
-  transform: translateY(22px);
-}
-
-.hero-card-middle:hover {
-  transform: translateY(-28px);
-}
-
-.hero-card-right:hover {
-  transform: translateY(7px);
+/* Dot Indicators - Hidden as they are not in the screenshot design */
+.carousel-indicators {
+  display: none !important;
 }
 
 /* --- Small Brands Logo Strip (Marquee on Mobile, Static Center on Desktop) --- */
@@ -493,7 +503,7 @@ h1, h2, h3, h4 {
   max-width: 110px;
   width: auto;
   object-fit: contain;
-  filter: grayscale(100%) opacity(50%);
+  /* filter: grayscale(100%) opacity(50%); */
   transition: var(--transition-smooth);
 }
 
@@ -1843,12 +1853,21 @@ h1, h2, h3, h4 {
     font-size: 3.2rem;
   }
   
-  .hero-grid {
-    gap: 1.5rem;
+  .hero-carousel-wrapper {
+    padding: 0;
   }
-  
-  .hero-card {
-    height: 340px;
+
+  .hero-carousel-card {
+    width: 36vw;
+    min-width: 240px;
+    height: 360px;
+    opacity: 0.85;
+    transform: scale(0.96);
+  }
+
+  .hero-carousel-card.active-slide {
+    opacity: 1;
+    transform: scale(1.03);
   }
   
   .services-container {
@@ -1917,23 +1936,35 @@ h1, h2, h3, h4 {
     display: block;
   }
   
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 400px;
+  .hero-carousel-wrapper {
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
   }
-  
-  .hero-card-left, 
-  .hero-card-middle, 
-  .hero-card-right {
-    transform: none !important;
-    height: 380px;
+
+  .hero-carousel-viewport {
+    overflow: visible;
+    padding: 20px 0;
   }
-  
-  .hero-card-left:hover, 
-  .hero-card-middle:hover, 
-  .hero-card-right:hover {
-    transform: translateY(-5px) !important;
+
+  .hero-carousel-track {
+    gap: 1.5rem;
+  }
+
+  .hero-carousel-card {
+    width: 82%; /* Show 82% of card, allowing next/prev to peek */
+    height: 400px;
+    opacity: 0.55;
+    transform: scale(0.9);
+  }
+
+  .hero-carousel-card.active-slide {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+
+  .carousel-nav-btn {
+    display: none !important; /* Hide arrows on mobile */
   }
   
   /* --- Mobile Infinite Loop Marquee for Brands Strip --- */
@@ -2069,4 +2100,98 @@ h1, h2, h3, h4 {
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+/* --- Brand Campaign Dropdown Component --- */
+.brand-dropdown-container {
+  position: relative;
+}
+
+.brand-dropdown-trigger {
+  background: none;
+  border: none;
+  font-family: var(--font-headings);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--accent-red);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition-fast);
+  padding: 0;
+}
+
+/* Custom trigger colors to match card style signatures */
+.brand-mtn .brand-dropdown-trigger {
+  color: #1A1512;
+}
+.brand-doobai .brand-dropdown-trigger {
+  color: #1A1512;
+}
+
+.brand-dropdown-trigger i {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.brand-dropdown-container.active .brand-dropdown-trigger i {
+  transform: rotate(180deg);
+}
+
+.brand-dropdown-menu {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  right: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(26, 21, 18, 0.08);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-medium);
+  padding: 0.5rem 0;
+  min-width: 170px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.brand-dropdown-container.active .brand-dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.brand-dropdown-menu a {
+  padding: 0.7rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--text-dark) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  transition: var(--transition-fast);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.brand-dropdown-menu a i {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  width: 16px;
+  text-align: center;
+  transition: var(--transition-fast);
+}
+
+.brand-dropdown-menu a:hover {
+  background-color: var(--accent-red-light);
+  color: var(--accent-red) !important;
+}
+
+.brand-dropdown-menu a:hover i {
+  color: var(--accent-red);
 }

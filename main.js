@@ -301,6 +301,223 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 8. Hero Section Carousel Implementation
+  const carouselWrapper = document.querySelector('.hero-carousel-wrapper');
+  const track = document.getElementById('heroCarouselTrack');
+  const indicatorsContainer = document.getElementById('carouselIndicators');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+
+  if (carouselWrapper && track && indicatorsContainer) {
+    const originalCards = Array.from(track.children);
+    const originalCount = originalCards.length;
+    const cloneStartCount = 5; // Clone all 5 items to prepend
+    const cloneEndCount = 5;   // Clone all 5 items to append
+
+    // Clone cards for seamless infinite scroll
+    const lastClones = originalCards.slice(-cloneStartCount).map(card => card.cloneNode(true));
+    const firstClones = originalCards.slice(0, cloneEndCount).map(card => card.cloneNode(true));
+
+    // Add cloned helper classes to target styling adjustments if needed
+    lastClones.forEach(clone => clone.classList.add('cloned-card'));
+    firstClones.forEach(clone => clone.classList.add('cloned-card'));
+
+    // Insert prepended and appended clones in correct sequence
+    const originalFirstCard = track.firstChild;
+    lastClones.forEach(clone => track.insertBefore(clone, originalFirstCard));
+    firstClones.forEach(clone => track.appendChild(clone));
+
+    const allCards = Array.from(track.children);
+    let currentIndex = cloneStartCount; // Start at the first original card index
+    let isTransitioning = false;
+    let autoplayTimer = null;
+
+    function getGap() {
+      const style = window.getComputedStyle(track);
+      const gapStr = style.gap || '32px';
+      return parseFloat(gapStr) || 32;
+    }
+
+    function updateCarousel(animate = true) {
+      if (animate) {
+        track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+      } else {
+        track.style.transition = 'none';
+      }
+
+      const cardWidth = allCards[0].getBoundingClientRect().width;
+      const gap = getGap();
+      const viewportWidth = carouselWrapper.querySelector('.hero-carousel-viewport').clientWidth;
+      
+      // Calculate translation offset to mathematically center the active card
+      const translateX = -currentIndex * (cardWidth + gap) + (viewportWidth - cardWidth) / 2;
+      track.style.transform = `translateX(${translateX}px)`;
+
+      // Identify active centered card relative to visible window
+      allCards.forEach((card, idx) => {
+        if (idx === currentIndex) {
+          card.classList.add('active-slide');
+        } else {
+          card.classList.remove('active-slide');
+        }
+      });
+
+      // Update dot indicators highlight
+      const activeOriginalIndex = (currentIndex - cloneStartCount + originalCount) % originalCount;
+      const dots = indicatorsContainer.querySelectorAll('.indicator-dot');
+      dots.forEach((dot, idx) => {
+        if (idx === activeOriginalIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    function moveToSlide(targetIndex) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex = targetIndex;
+      updateCarousel(true);
+    }
+
+    function nextSlide() {
+      moveToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      moveToSlide(currentIndex - 1);
+    }
+
+    // Handle seamless infinite snapping after transition animation finishes
+    track.addEventListener('transitionend', () => {
+      isTransitioning = false;
+      
+      // Snap from end clone to start original
+      if (currentIndex >= originalCount + cloneStartCount) {
+        currentIndex = cloneStartCount;
+        updateCarousel(false);
+      }
+      // Snap from start clone to end original
+      else if (currentIndex < cloneStartCount) {
+        currentIndex = originalCount + cloneStartCount - 1;
+        updateCarousel(false);
+      }
+    });
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoplay();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoplay();
+      });
+    }
+
+    indicatorsContainer.addEventListener('click', (e) => {
+      const dot = e.target.closest('.indicator-dot');
+      if (!dot) return;
+      
+      const targetOriginalIndex = parseInt(dot.getAttribute('data-index'), 10);
+      moveToSlide(targetOriginalIndex + cloneStartCount);
+      resetAutoplay();
+    });
+
+    function startAutoplay() {
+      if (autoplayTimer) return;
+      autoplayTimer = setInterval(nextSlide, 3500);
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    function resetAutoplay() {
+      stopAutoplay();
+      startAutoplay();
+    }
+
+    // Autoplay pauses when hovering on desktop/tap on mobile
+    carouselWrapper.addEventListener('mouseenter', stopAutoplay);
+    carouselWrapper.addEventListener('mouseleave', startAutoplay);
+    carouselWrapper.addEventListener('touchstart', stopAutoplay, { passive: true });
+    carouselWrapper.addEventListener('touchend', startAutoplay, { passive: true });
+
+    // Handle window resize dynamically to adjust translation
+    window.addEventListener('resize', () => {
+      updateCarousel(false);
+    });
+
+    // Touch Swipe Gestures support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleGesture();
+    }, { passive: true });
+
+    function handleGesture() {
+      const swipeThreshold = 55;
+      if (touchStartX - touchEndX > swipeThreshold) {
+        nextSlide();
+        resetAutoplay();
+      } else if (touchEndX - touchStartX > swipeThreshold) {
+        prevSlide();
+        resetAutoplay();
+      }
+    }
+
+    // Give DOM a small layout paint delay to ensure dimensions are loaded correctly before initializing
+    setTimeout(() => {
+      updateCarousel(false);
+      startAutoplay();
+    }, 150);
+  }
+
+  // 9. Brand Campaign Dropdown Interactivity
+  const dropdownContainers = document.querySelectorAll('.brand-dropdown-container');
+
+  dropdownContainers.forEach(container => {
+    const trigger = container.querySelector('.brand-dropdown-trigger');
+
+    if (trigger) {
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        const isActive = container.classList.contains('active');
+        
+        // Close other dropdowns
+        dropdownContainers.forEach(otherContainer => {
+          otherContainer.classList.remove('active');
+        });
+
+        if (!isActive) {
+          container.classList.add('active');
+        }
+      });
+    }
+  });
+
+  // Close open dropdowns if user clicks outside
+  document.addEventListener('click', () => {
+    dropdownContainers.forEach(container => {
+      container.classList.remove('active');
+    });
+  });
+
 });
 // ==========================================
 // InfluenceMe - Main Application Logic End
