@@ -13,4 +13,20 @@ export default defineConfig({
       },
     },
   },
+  plugins: [
+    {
+      name: 'clean-urls-middleware',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url) {
+            const urlPath = req.url.split('?')[0].split('#')[0];
+            if (urlPath && !urlPath.includes('.') && urlPath !== '/') {
+              req.url = req.url.replace(urlPath, urlPath + '.html');
+            }
+          }
+          next();
+        });
+      }
+    }
+  ]
 });
