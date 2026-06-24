@@ -518,6 +518,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+
+  // 11. Ensure social media and external links open in a new tab
+  const allLinks = document.querySelectorAll('a');
+  allLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && (href.startsWith('http://') || href.startsWith('https://') || href.includes('instagram.com'))) {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    }
+  });
+
 });
 // ==========================================
 // InfluenceMe - Main Application Logic End
