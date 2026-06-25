@@ -6,8 +6,8 @@ console.log("InfluenceMe: main.js loaded");
 
 // Formspree Form IDs configuration
 // Replace these with your actual Formspree Form IDs (e.g. 'mqkowpyp')
-const CONTACT_FORMSPREE_ID = 'mpqgpqgr';
-const CREATOR_FORMSPREE_ID = 'xnjkpjew';
+const CONTACT_FORMSPREE_ID = 'mjgqywbo';
+const CREATOR_FORMSPREE_ID = 'xdaregnl';
 
 document.addEventListener('DOMContentLoaded', () => {
   
