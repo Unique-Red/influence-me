@@ -4,6 +4,10 @@
 
 console.log("InfluenceMe: main.js loaded");
 
+// Google Apps Script Web App URL configuration
+// Replace 'YOUR_GOOGLE_SCRIPT_URL' with your actual Google Apps Script Web App deployment URL.
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz28y0o7znM8xfzMEbgmT1j9w6kB1G7ejnek0G0GPjSOHAHpB2eVfcDdUrYrKCP3DY4/exec';
+
 document.addEventListener('DOMContentLoaded', () => {
   
   // 1. Initialize Animate On Scroll (AOS) with error prevention
@@ -113,18 +117,62 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Contact Form Submission (Mock handling)
+  // 6. Contact Form Submission (Google Sheets and Email integration)
   const contactForm = document.getElementById('contactForm');
   if (contactForm && successModal) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      console.log("InfluenceMe: Contact Form submitted!");
+      console.log("InfluenceMe: Contact Form submission started");
       
-      // Show success modal
-      successModal.classList.add('active');
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit';
       
-      // Reset the form
-      contactForm.reset();
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+      }
+      
+      const payload = {
+        formType: 'contact',
+        fullName: document.getElementById('fullName').value,
+        emailAddress: document.getElementById('emailAddress').value,
+        websiteUrl: document.getElementById('websiteUrl') ? document.getElementById('websiteUrl').value : '',
+        helpDetails: document.getElementById('helpDetails').value
+      };
+      
+      try {
+        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbz28y0o7znM8xfzMEbgmT1j9w6kB1G7ejnek0G0GPjSOHAHpB2eVfcDdUrYrKCP3DY4/exec') {
+          console.warn("InfluenceMe: GOOGLE_SCRIPT_URL is still placeholder. Simulating success local behavior.");
+        } else {
+          const response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'cors',
+            redirect: 'follow',
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: JSON.stringify(payload)
+          });
+          const result = await response.json();
+          if (result.status !== 'success') {
+            throw new Error(result.message || 'Server returned failure status');
+          }
+        }
+        
+        // Show success modal
+        successModal.classList.add('active');
+        
+        // Reset the form
+        contactForm.reset();
+      } catch (error) {
+        console.error("InfluenceMe: Error submitting contact form:", error);
+        alert("There was an error submitting your message. Please try again or email us directly at info@influencemeagency.com");
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
+      }
     });
   }
 
@@ -254,9 +302,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // D. Creator Onboarding Form Submission
+  // Helper function to read file as base64
+  const getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+  };
+
+  // D. Creator Onboarding Form Submission (Google Sheets and Email integration)
   if (creatorForm) {
-    creatorForm.addEventListener('submit', (e) => {
+    creatorForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
       // Final validation check for textarea character length
@@ -267,36 +325,102 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       
-      // Show success modal
-      if (successModal) {
-        successModal.classList.add('active');
+      const submitBtn = document.getElementById('submitBtn');
+      const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit application';
+      
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting application...';
       }
       
-      // Reset form fields
-      creatorForm.reset();
-      
-      // Reset custom selects
-      customSelects.forEach(select => {
-        const selectValue = select.querySelector('.select-value');
-        const hiddenInput = select.querySelector('input[type="hidden"]');
-        if (select.id === 'nicheSelect') {
-          if (selectValue) selectValue.textContent = 'Select a niche...';
-        } else if (select.id === 'audienceSelect') {
-          if (selectValue) selectValue.textContent = 'Select range...';
+      let mediaKitData = null;
+      if (mediaKitInput && mediaKitInput.files && mediaKitInput.files.length > 0) {
+        const file = mediaKitInput.files[0];
+        try {
+          const base64String = await getBase64(file);
+          mediaKitData = {
+            base64: base64String,
+            fileName: file.name,
+            contentType: file.type
+          };
+        } catch (fileErr) {
+          console.error("InfluenceMe: Error reading media kit file:", fileErr);
         }
-        if (hiddenInput) hiddenInput.value = '';
-        select.querySelectorAll('.select-option').forEach(opt => opt.classList.remove('selected'));
-      });
-      
-      // Reset file upload zone label
-      if (uploadLabel) {
-        uploadLabel.innerHTML = 'Drop your media kit here or <span>browse</span>';
       }
       
-      // Reset char count label
-      if (charCount) {
-        charCount.textContent = '0 characters (min 50 characters required)';
-        charCount.classList.remove('error');
+      const payload = {
+        formType: 'creator',
+        fullName: creatorForm.querySelector('#fullName') ? creatorForm.querySelector('#fullName').value : '',
+        emailAddress: creatorForm.querySelector('#emailAddress') ? creatorForm.querySelector('#emailAddress').value : '',
+        location: document.getElementById('location') ? document.getElementById('location').value : '',
+        igHandle: document.getElementById('igHandle') ? document.getElementById('igHandle').value : '',
+        tiktokHandle: document.getElementById('tiktokHandle') ? document.getElementById('tiktokHandle').value : '',
+        twitterHandle: document.getElementById('twitterHandle') ? document.getElementById('twitterHandle').value : '',
+        youtubeHandle: document.getElementById('youtubeHandle') ? document.getElementById('youtubeHandle').value : '',
+        primaryNiche: document.getElementById('primaryNiche') ? document.getElementById('primaryNiche').value : '',
+        audienceSize: document.getElementById('audienceSize') ? document.getElementById('audienceSize').value : '',
+        pitchText: pitchText ? pitchText.value : '',
+        mediaKit: mediaKitData
+      };
+      
+      try {
+        if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL') {
+          console.warn("InfluenceMe: GOOGLE_SCRIPT_URL is still placeholder. Simulating success local behavior.");
+        } else {
+          const response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'cors',
+            redirect: 'follow',
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: JSON.stringify(payload)
+          });
+          const result = await response.json();
+          if (result.status !== 'success') {
+            throw new Error(result.message || 'Server returned failure status');
+          }
+        }
+        
+        // Show success modal
+        if (successModal) {
+          successModal.classList.add('active');
+        }
+        
+        // Reset form fields
+        creatorForm.reset();
+        
+        // Reset custom selects
+        customSelects.forEach(select => {
+          const selectValue = select.querySelector('.select-value');
+          const hiddenInput = select.querySelector('input[type="hidden"]');
+          if (select.id === 'nicheSelect') {
+            if (selectValue) selectValue.textContent = 'Select a niche...';
+          } else if (select.id === 'audienceSelect') {
+            if (selectValue) selectValue.textContent = 'Select range...';
+          }
+          if (hiddenInput) hiddenInput.value = '';
+          select.querySelectorAll('.select-option').forEach(opt => opt.classList.remove('selected'));
+        });
+        
+        // Reset file upload zone label
+        if (uploadLabel) {
+          uploadLabel.innerHTML = 'Drop your media kit here or <span>browse</span>';
+        }
+        
+        // Reset char count label
+        if (charCount) {
+          charCount.textContent = '0 characters (min 50 characters required)';
+          charCount.classList.remove('error');
+        }
+      } catch (error) {
+        console.error("InfluenceMe: Error submitting creator form:", error);
+        alert("There was an error submitting your application. Please try again or contact us directly.");
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
       }
     });
   }
