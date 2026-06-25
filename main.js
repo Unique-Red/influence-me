@@ -4,9 +4,10 @@
 
 console.log("InfluenceMe: main.js loaded");
 
-// Google Apps Script Web App URL configuration
-// Replace 'YOUR_GOOGLE_SCRIPT_URL' with your actual Google Apps Script Web App deployment URL.
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz28y0o7znM8xfzMEbgmT1j9w6kB1G7ejnek0G0GPjSOHAHpB2eVfcDdUrYrKCP3DY4/exec';
+// Formspree Form IDs configuration
+// Replace these with your actual Formspree Form IDs (e.g. 'mqkowpyp')
+const CONTACT_FORMSPREE_ID = 'mpqgpqgr';
+const CREATOR_FORMSPREE_ID = 'xnjkpjew';
 
 document.addEventListener('DOMContentLoaded', () => {
   
@@ -141,21 +142,20 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       
       try {
-        if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbz28y0o7znM8xfzMEbgmT1j9w6kB1G7ejnek0G0GPjSOHAHpB2eVfcDdUrYrKCP3DY4/exec') {
-          console.warn("InfluenceMe: GOOGLE_SCRIPT_URL is still placeholder. Simulating success local behavior.");
+        if (CONTACT_FORMSPREE_ID === 'YOUR_CONTACT_FORMSPREE_ID') {
+          console.warn("InfluenceMe: CONTACT_FORMSPREE_ID is still placeholder. Simulating success local behavior.");
         } else {
-          const response = await fetch(GOOGLE_SCRIPT_URL, {
+          const response = await fetch(`https://formspree.io/f/${CONTACT_FORMSPREE_ID}`, {
             method: 'POST',
-            mode: 'cors',
-            redirect: 'follow',
             headers: {
-              'Content-Type': 'text/plain;charset=utf-8'
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
             },
             body: JSON.stringify(payload)
           });
           const result = await response.json();
-          if (result.status !== 'success') {
-            throw new Error(result.message || 'Server returned failure status');
+          if (!response.ok) {
+            throw new Error(result.error || 'Server returned failure status');
           }
         }
         
@@ -332,53 +332,41 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Submitting application...';
       }
+      const formData = new FormData();
+      formData.append('fullName', creatorForm.querySelector('#fullName') ? creatorForm.querySelector('#fullName').value : '');
+      formData.append('emailAddress', creatorForm.querySelector('#emailAddress') ? creatorForm.querySelector('#emailAddress').value : '');
+      formData.append('location', document.getElementById('location') ? document.getElementById('location').value : '');
+      formData.append('igHandle', document.getElementById('igHandle') ? document.getElementById('igHandle').value : '');
+      formData.append('tiktokHandle', document.getElementById('tiktokHandle') ? document.getElementById('tiktokHandle').value : '');
+      formData.append('twitterHandle', document.getElementById('twitterHandle') ? document.getElementById('twitterHandle').value : '');
+      formData.append('youtubeHandle', document.getElementById('youtubeHandle') ? document.getElementById('youtubeHandle').value : '');
+      formData.append('primaryNiche', document.getElementById('primaryNiche') ? document.getElementById('primaryNiche').value : '');
+      formData.append('audienceSize', document.getElementById('audienceSize') ? document.getElementById('audienceSize').value : '');
+      formData.append('pitchText', pitchText ? pitchText.value : '');
       
-      let mediaKitData = null;
       if (mediaKitInput && mediaKitInput.files && mediaKitInput.files.length > 0) {
-        const file = mediaKitInput.files[0];
-        try {
-          const base64String = await getBase64(file);
-          mediaKitData = {
-            base64: base64String,
-            fileName: file.name,
-            contentType: file.type
-          };
-        } catch (fileErr) {
-          console.error("InfluenceMe: Error reading media kit file:", fileErr);
-        }
+        formData.append('mediaKit', mediaKitInput.files[0]);
       }
       
-      const payload = {
-        formType: 'creator',
-        fullName: creatorForm.querySelector('#fullName') ? creatorForm.querySelector('#fullName').value : '',
-        emailAddress: creatorForm.querySelector('#emailAddress') ? creatorForm.querySelector('#emailAddress').value : '',
-        location: document.getElementById('location') ? document.getElementById('location').value : '',
-        igHandle: document.getElementById('igHandle') ? document.getElementById('igHandle').value : '',
-        tiktokHandle: document.getElementById('tiktokHandle') ? document.getElementById('tiktokHandle').value : '',
-        twitterHandle: document.getElementById('twitterHandle') ? document.getElementById('twitterHandle').value : '',
-        youtubeHandle: document.getElementById('youtubeHandle') ? document.getElementById('youtubeHandle').value : '',
-        primaryNiche: document.getElementById('primaryNiche') ? document.getElementById('primaryNiche').value : '',
-        audienceSize: document.getElementById('audienceSize') ? document.getElementById('audienceSize').value : '',
-        pitchText: pitchText ? pitchText.value : '',
-        mediaKit: mediaKitData
-      };
+      const mediaKitLink = document.getElementById('mediaKitLink') ? document.getElementById('mediaKitLink').value : '';
+      if (mediaKitLink) {
+        formData.append('mediaKitLink', mediaKitLink);
+      }
       
       try {
-        if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL') {
-          console.warn("InfluenceMe: GOOGLE_SCRIPT_URL is still placeholder. Simulating success local behavior.");
+        if (CREATOR_FORMSPREE_ID === 'YOUR_CREATOR_FORMSPREE_ID') {
+          console.warn("InfluenceMe: CREATOR_FORMSPREE_ID is still placeholder. Simulating success local behavior.");
         } else {
-          const response = await fetch(GOOGLE_SCRIPT_URL, {
+          const response = await fetch(`https://formspree.io/f/${CREATOR_FORMSPREE_ID}`, {
             method: 'POST',
-            mode: 'cors',
-            redirect: 'follow',
             headers: {
-              'Content-Type': 'text/plain;charset=utf-8'
+              'Accept': 'application/json'
             },
-            body: JSON.stringify(payload)
+            body: formData
           });
           const result = await response.json();
-          if (result.status !== 'success') {
-            throw new Error(result.message || 'Server returned failure status');
+          if (!response.ok) {
+            throw new Error(result.error || 'Server returned failure status');
           }
         }
         
@@ -408,6 +396,11 @@ document.addEventListener('DOMContentLoaded', () => {
           uploadLabel.innerHTML = 'Drop your media kit here or <span>browse</span>';
         }
         
+        // Reset link field
+        if (document.getElementById('mediaKitLink')) {
+          document.getElementById('mediaKitLink').value = '';
+        }
+        
         // Reset char count label
         if (charCount) {
           charCount.textContent = '0 characters (min 50 characters required)';
@@ -415,7 +408,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } catch (error) {
         console.error("InfluenceMe: Error submitting creator form:", error);
-        alert("There was an error submitting your application. Please try again or contact us directly.");
+        
+        // Check if Formspree rejected it due to file upload plan restriction
+        const errMsg = error.message ? error.message.toLowerCase() : '';
+        if (errMsg.includes('file upload') || errMsg.includes('not permitted') || errMsg.includes('allow')) {
+          alert("File uploads are not permitted on your Formspree plan. Please paste a link to your Media Kit in the text field instead (Google Drive, Dropbox, etc.) and clear the uploaded file before submitting.");
+        } else {
+          alert("There was an error submitting your application. Please try again or contact us directly.");
+        }
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
